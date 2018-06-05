@@ -30,7 +30,7 @@ class Index extends React.Component<{}, AppState> {
     private searchGiphy(query?: string) {
         let httpQuery = 'api_key=dc6zaTOxFJmzC';
         if (query) {
-            httpQuery += '&tag=' + this.sanitizeInput(query);
+            httpQuery += '&tag=' + 'cat';
         }
 
         fetch(`http://api.giphy.com/v1/gifs/random?${httpQuery}`)

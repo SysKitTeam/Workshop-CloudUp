@@ -67,6 +67,7 @@ class Index extends React.Component<{}, AppState> {
                 <GiphyViewer
                     source={this.state.gifSource}
                 />
+                   {'Give me more giphy!'}
                 <form
                     onSubmit={this.onSubmit}
                 >

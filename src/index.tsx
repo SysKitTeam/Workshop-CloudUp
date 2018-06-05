@@ -68,7 +68,7 @@ class Index extends React.Component<{}, AppState> {
                     source={this.state.gifSource}
                 />
 
-                {'Just some randoooom giphy'}
+                {'Just some randoooom giphy sdadasd asd'}
                 <form
                     onSubmit={this.onSubmit}
                 >

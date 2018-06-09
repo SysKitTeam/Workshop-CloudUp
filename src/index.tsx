@@ -1,13 +1,32 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { getRandomGiphy } from './util/giphy.service';
-import Lecture from './demo/lecture';
+import { SearchComponent } from './components/searchComponent';
+import { GiphyViewer } from './components/giphyViewer';
 
-class Index extends React.Component<{}, {}> {
-    private searchGiphy(query?: string) {
+interface IIndexState {
+    gifSource: string;
+}
+
+class Index extends React.Component<{}, IIndexState> {
+
+    constructor() {
+        super({});
+        this.state = {
+            gifSource: ''
+        };
+    }
+
+    private searchGiphy = (query?: string) => {
         getRandomGiphy(query).then(gifSource => {
-            // nesto uraditi sa gif source. primjer prikaza: <img src={gifSource} />
+            this.setState({
+                gifSource: gifSource
+            });
         });
+    }
+
+    private _alertaj(value: string) {
+        alert(value);
     }
 
     public render(): JSX.Element {
@@ -19,10 +38,8 @@ class Index extends React.Component<{}, {}> {
                     alignItems: 'center'
                 }}
             >
-                <Lecture
-                    lecturerName="dino"
-                    onExamStarted={(students) => console.log('start')}
-                />
+                <SearchComponent onSearch={this.searchGiphy} />
+                <GiphyViewer gifSource={this.state.gifSource} />
             </div>
         );
     }
